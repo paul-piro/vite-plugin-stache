@@ -68,7 +68,6 @@
     "can-stache": "^5.1.1",
     "can-stache-bindings": "^5.0.5",
     "can-view-import": "^5.0.1",
-    "can-view-scope": "^4.13.7",
-    "vite": "^2.7"
+    "can-view-scope": "^4.13.7"
   }
 }
