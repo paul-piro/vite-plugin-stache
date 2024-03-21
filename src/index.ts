@@ -172,6 +172,12 @@ function stacheInlinePlugin(rawOptions: Options = {}): Plugin {
       const [filename] = id.split('?', 2)
 
       if (filename.endsWith('.js') && /node_modules/.exec(id) === null) {
+        if(whichModules && whichModules.default) {
+          whichModules = whichModules.default
+        }
+        if(stacheTransformer && stacheTransformer.default) {
+          stacheTransformer = stacheTransformer.default
+        }
         if (whichModules(code).length > 0) {
           const newCode = stacheTransformer(code);
           return {
