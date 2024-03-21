@@ -172,14 +172,16 @@ function stacheInlinePlugin(rawOptions: Options = {}): Plugin {
       const [filename] = id.split('?', 2)
 
       if (filename.endsWith('.js') && /node_modules/.exec(id) === null) {
-        if(whichModules && whichModules.default) {
-          whichModules = whichModules.default
+        let wm = whichModules 
+        let st = stacheTransformer
+        if(wm && wm.default) {
+          wm = wm.default
         }
-        if(stacheTransformer && stacheTransformer.default) {
-          stacheTransformer = stacheTransformer.default
+        if(st && st.default) {
+          st = st.default
         }
-        if (whichModules(code).length > 0) {
-          const newCode = stacheTransformer(code);
+        if (wm(code).length > 0) {
+          const newCode = st(code);
           return {
             code: newCode,
             map: {mappings: ''}
